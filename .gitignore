@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# 환경변수 (SECRET_KEY, Supabase 키 포함 — 절대 커밋 금지)
+.env
+.env.local
+frontend/.env
+frontend/.env.local
+
+# DB 파일
+data/
+*.db
+
+# Node
+node_modules/
+frontend/dist/
+frontend/build/
+
+# 백업
+backup/
+
+# pytest 캐시
+pytest-cache-files-*/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
