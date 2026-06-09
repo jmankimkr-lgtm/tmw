@@ -56,8 +56,16 @@ export function emptyPlanner(dateStr: string): PlannerData {
   }
 }
 
+/** 로컬 시간대 기준 YYYY-MM-DD 포맷 (toISOString의 UTC 변환 회피) */
+function fmtLocal(d: Date): string {
+  const y = d.getFullYear()
+  const m = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+  return `${y}-${m}-${day}`
+}
+
 export function todayStr(): string {
-  return new Date().toISOString().slice(0, 10)
+  return fmtLocal(new Date())
 }
 
 export function formatDateKr(dateStr: string): string {
@@ -69,11 +77,11 @@ export function formatDateKr(dateStr: string): string {
 export function prevDate(dateStr: string): string {
   const d = new Date(dateStr + 'T00:00:00')
   d.setDate(d.getDate() - 1)
-  return d.toISOString().slice(0, 10)
+  return fmtLocal(d)
 }
 
 export function nextDate(dateStr: string): string {
   const d = new Date(dateStr + 'T00:00:00')
   d.setDate(d.getDate() + 1)
-  return d.toISOString().slice(0, 10)
+  return fmtLocal(d)
 }
